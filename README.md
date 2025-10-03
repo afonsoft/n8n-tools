@@ -102,14 +102,6 @@ As configurações recomendadas para reduzir ruído de logs e ajustar recursos s
 
 Trade-offs: reduzir logs facilita I/O e armazenamento, mas reduz visibilidade para debug. Ajuste conforme ambiente e necessidades de suporte.
 
-## Observabilidade e Telemetria
-
-Não foram encontrados arquivos de integração com DataDog, OpenTelemetry ou QuickConfig neste repositório. Recomendações rápidas:
-
-- Enviar métricas básicas e logs para um coletor (Prometheus + Grafana ou DataDog)
-- Expor métricas do Postgres (pg_exporter) e do sistema
-- Habilitar tracing se necessário (OpenTelemetry) para analisar execução de workflows complexos
-
 ## SRE: boas práticas e recomendações
 
 - Nunca versionar segredos. Use `.env`, Docker secrets ou um vault.
@@ -143,7 +135,7 @@ Este repositório inclui `LICENSE` com GNU GPLv3. Se essa licença não for dese
 
 ## Changelog
 
-O histórico de mudanças está em `CHANGELOG.md` (formato Keep a Changelog). Veja também a seção "CHANGELOG" abaixo.
+O histórico de mudanças está em `CHANGELOG.md` (formato Keep a Changelog). Veja também a seção [CHANGELOG](CHANGELOG.md) abaixo.
 
 ---
 
