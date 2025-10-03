@@ -15,30 +15,6 @@ recursos e bind-mounts locais para persistência de dados).
 O objetivo é ser um repositório leve para ambiente de desenvolvimento
 local, com foco em reproducibilidade e facilidade de uso.
 
-## Estrutura do repositório
-
-```
-n8n-tools/
-├── docker-compose.yml     # Compose para n8n + Postgres (bind mounts, logs, timezone)
-├── start.sh               # Script simples para reiniciar o ambiente e abrir n8n
-├── LICENSE                # GPLv3 (arquivo de licença do repositório)
-├── README.md              # Este arquivo
-└── postgres/              # Dados do Postgres (bind mount local)
-		└── ...               # (será criado pelo compose se não existir)
-```
-
-Descrição sucinta dos arquivos/pastas:
-
-- `docker-compose.yml`: define os serviços `n8n` e `postgres`. Usa bind
-	mounts relativos (`./n8n` e `./postgres`) para persistência. Possui
-	variáveis de ambiente, timezone configurado para `America/Sao_Paulo`,
-	e blocos `deploy.resources` para recomendar limites de CPU/memória (úteis
-	com Docker Swarm). Também inclui configuração básica de rotação de logs.
-- `start.sh`: script shell simples (sem parâmetros) que dá `down`, faz
-	`up --build -d`, aguarda e tenta abrir `http://localhost:5678`.
-- `LICENSE`: contém GNU GPLv3 — isto significa que o projeto está licenciado
-	sob a GPLv3. Consulte o arquivo `LICENSE` para os termos completos.
-
 ## Como rodar (desenvolvimento local)
 
 Pré-requisitos
@@ -207,42 +183,6 @@ Não foram encontrados arquivos de integração com DataDog, OpenTelemetry ou Qu
 Visão de negócio: este repositório entrega um ambiente local confiável para desenvolvedores criarem e testarem workflows do n8n rapidamente, reduzindo o tempo de setup.
 
 Visão técnica: arquitetura simples baseada em containers (n8n + Postgres), armazenamento local para persistência e recomendações para produção (HTTPS, proxy reverso, volumes gerenciados).
-
-### Exemplos de aplicação de princípios (C#)
-
-SOLID — exemplo resumido (C#):
-
-```csharp
-// S: Single Responsibility
-public class EmailSender {
-    public void Send(string to, string subject, string body) { /* ... */ }
-}
-
-// O: Open/Closed
-public interface ILogger { void Log(string message); }
-
-public class ConsoleLogger : ILogger { public void Log(string m) => Console.WriteLine(m); }
-
-// D: Dependency Inversion (injeção via construtor)
-public class WorkflowProcessor {
-    private readonly ILogger _logger;
-    public WorkflowProcessor(ILogger logger) { _logger = logger; }
-}
-```
-
-DDD — patterns (breve):
-
-- Aggregate: `Workflow` agrega `Task` e `Trigger`.
-- Entity: `User`, `Workflow` (identidade própria).
-- Value Object: `EmailAddress` (imutável, valida formato).
-- Repository: `IWorkflowRepository` abstrai persistência.
-
-Clean Architecture — camadas sugeridas:
-
-- Domain (entidades, regras de negócio)
-- Application (casos de uso)
-- Infrastructure (acesso a dados, integrações)
-- Presentation (API, UI)
 
 ## Padrão de commits
 
