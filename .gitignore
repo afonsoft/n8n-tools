@@ -55,3 +55,4 @@ nunit-*.xml
 .env
 n8n
 postgres
+env
