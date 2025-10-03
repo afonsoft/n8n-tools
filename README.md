@@ -137,12 +137,4 @@ Este repositório inclui `LICENSE` com GNU GPLv3. Se essa licença não for dese
 
 O histórico de mudanças está em `CHANGELOG.md` (formato Keep a Changelog). Veja também a seção [CHANGELOG](CHANGELOG.md) abaixo.
 
----
 
-Se quiser, eu posso:
-
-1. Criar um `.env.example` com placeholders seguros;
-2. Adicionar um `start.bat` para Windows;
-3. Montar um `postgresql.conf` de exemplo e alterar o `docker-compose.yml` para usá-lo.
-
-Diga qual opção prefere e eu continuo.
