@@ -14,6 +14,7 @@ services:
       - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD} # Use uma variável de ambiente para segurança
       - N8N_HOST=localhost # Ou seu domínio, ex: n8n.example.com
       - N8N_PORT=5678
+      - N8N_LOG_LEVEL=error # Níveis: fatal, error, warn, info, verbose, debug, silly
       - N8N_PROTOCOL=http # ou https se usar proxy reverso com SSL
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - GENERIC_TIMEZONE=America/Sao_Paulo # Timezone ajustado para Brasil
